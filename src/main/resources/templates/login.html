@@ -5,6 +5,7 @@
     <title>Login Page</title>
     <style>
         body {
+            background-image: url('bgimage.jpg');
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -15,21 +16,43 @@
         }
 
         .login-container {
-            background-color: #fff;
+            background-color: #afaeae;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 400px;
             text-align: center;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
+<!--        label {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: flex-start;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            box-sizing: border-box;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--        }-->
+
+        label{
+            display: flex;
             margin-bottom: 10px;
+            align-items: flex-start;
+        }
+
+        input {
+            width: 50%;
+            padding: 10px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             border-radius: 4px;
+            margin-left:30px;
+
         }
 
         button {
@@ -49,14 +72,27 @@
 <body>
 <div class="login-container">
     <h1>Login</h1>
-    <form action="/login" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
+    <!-- Display Date -->
+    <p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" style="font-weight: bold;"></p>
+
+    <!-- Display Time -->
+    <p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
+
+
+    <form action="/login" method="post">
+        <label for="username">Username:
+            <input type="text" id="username" name="username" required>
+        </label>
+
+        <label for="password">Password:
+            <input type="password" id="password" name="password" required>
+        </label>
+
+        <!-- Additional field for Branch Code -->
+        <label for="branchCode">Branch Code:
+            <input type="text" id="branchCode" name="branchCode" required>
+        </label>
 
         <button type="submit">Login</button>
     </form>

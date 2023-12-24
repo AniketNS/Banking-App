@@ -9,7 +9,5 @@ import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
     // Custom queries can be added here if needed
-    boolean existsByUsername(String username);
-
-    Optional<User> findByUsername(String username);
+    boolean existsByUsernameAndPassword(String username, String password);
 }

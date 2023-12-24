@@ -15,8 +15,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public boolean isUserRegistered(String username){
-        return userRepository.existsById(username);
+    public boolean isUserRegistered(String username, String password){
+        // Check if a user with the given username and password exists
+        return userRepository.existsByUsernameAndPassword(username, password);
     }
-
 }

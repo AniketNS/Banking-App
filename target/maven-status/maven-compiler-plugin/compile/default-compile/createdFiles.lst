@@ -2,6 +2,7 @@ com/example/banking/service/UserService.class
 com/example/banking/controller/HelloController.class
 com/example/banking/repository/UserRepository.class
 com/example/banking/config/MongoDBConfig.class
+com/example/banking/controller/DashboardController.class
 com/example/banking/controller/CustomErrorController.class
 com/example/banking/controller/LoginController.class
 com/example/banking/model/User.class

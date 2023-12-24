@@ -29,7 +29,6 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user, Model model) {
-
         try {
             // Validate user data if needed
             userRepository.save(user);

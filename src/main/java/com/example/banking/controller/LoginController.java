@@ -30,13 +30,17 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginUser(@ModelAttribute("user") User user, Model model) {
-        // Verify if the user is registered
-        if (userService.isUserRegistered(user.getUsername())) {
+        // Set branch code based on some logic or use a default value
+        user.setBranchcode("0002");
+
+        // Verify if the user is registered with the given username and password
+        if (userService.isUserRegistered(user.getUsername(), user.getPassword()) && "0002".equals(user.getBranchcode())) {
             // Perform login logic, e.g., check password, set session attributes, etc.
-            return "redirect:/hello"; // Redirect to the dashboard page after successful login
+            return "redirect:/dashboard"; // Redirect to the dashboard page after successful login
         } else {
-            model.addAttribute("errorMessage", "User not registered. Please register first.");
+            model.addAttribute("errorMessage", "Invalid username, password, or branch code. Please try again.");
             return "login"; // Return to the login page with an error message
         }
     }
+
 }

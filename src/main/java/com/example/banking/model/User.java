@@ -13,6 +13,10 @@ public class User {
     private String password;
     private String confirmPassword;
     private String email;
+
+    // New field for branch code
+    private String branchcode;
+
     public User() {
         // default constructor
     }
@@ -39,7 +43,7 @@ public class User {
         return confirmPassword;
     }
 
-    public void setConfirmpassword(String confirmpassword) {
+    public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
 
@@ -49,5 +53,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    // Getter and setter for branch code
+    public String getBranchcode() {
+        return branchcode;
+    }
+
+    public void setBranchcode(String branchcode) {
+        this.branchcode = branchcode;
     }
 }
