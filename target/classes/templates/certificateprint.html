@@ -7,15 +7,84 @@
         body {
             background-color: skyblue;
         }
-
         h1, h2 {
             text-align: center;
         }
-
         .headdata {
             display: flex;
+            flex-direction:row ;
             text-align: center;
-            margin:2px;
+            margin: 2px;
+            justify-content: center;
+        }
+        .headdata p {
+            margin-right: 30px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 10px;
+            border: 1px solid black;
+            width: 50%;
+        }
+        .box p {
+            margin-left: 50px;
+        }
+        .box input {
+            width: 10%;
+        }
+        .date input{
+            width: 48%;
+        }
+        .member {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-right: 12px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .member p {
+            margin: 30px;
+        }
+        .date p {
+            margin: 30px;
+        }
+        .date {
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+        }
+        .message{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .message input {
+            width: 1040px;
+            padding: 8px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 10px;
+        }
+        .buttons button {
+            margin: 10px;
+            padding: 10px;
+            width: 100px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -26,7 +95,42 @@
     <p th:text="'Bank Code: 0001'"></p>
     <p th:text="'Branch Code: ' + ${branchcode}" style="font-weight: bold;"></p>
     <p th:text="'User: ' + ${username}" style="font-weight: bold;"></p>
+    <p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
 </div>
-
+<div class="container">
+    <h3>Certification Details</h3>
+    <div class="box">
+        <p>Member Type :
+            <input type="text" name="memberType">
+        </p>
+        <div class="member">
+            <p>Member No From :
+                <input type="text" name="memberNoFrom">
+            </p>
+            <p>Member No To :
+                <input type="text" name="memberNoTo">
+            </p>
+        </div>
+        <div class="date">
+            <p>Issue Date From :
+                <input type="date" name="issueDateFrom">
+            </p>
+            <p>To Date :
+                <input type="date" name="issueDateTo">
+            </p>
+        </div>
+    </div>
+</div>
+<div class="message">
+    <p>Message :
+        <input type="text" name="message">
+    </p>
+</div>
+<div class="buttons">
+    <button type="submit">Submit</button>
+    <!-- I want the button print which will give me a pdf format report -->
+    <button type="button" onclick="window.location.href='/certificateprint'">Print</button>
+    <button type="button" onclick="window.location.href='/dashboard'">Cancel</button>
+</div>
 </body>
 </html>
