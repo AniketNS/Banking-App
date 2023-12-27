@@ -1,4 +1,5 @@
 com/example/banking/service/UserService.class
+com/example/banking/controller/CertificatePrintController.class
 com/example/banking/controller/HelloController.class
 com/example/banking/repository/UserRepository.class
 com/example/banking/config/MongoDBConfig.class

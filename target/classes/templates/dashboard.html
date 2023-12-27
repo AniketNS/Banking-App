@@ -5,21 +5,25 @@
     <title>Dashboard</title>
     <style>
         body {
-        background-image: url('bgimage.jpg');
+            background-image: url('bgimage.jpg');
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column; /* Display children in a column */
         }
 
         .navbar {
             background-color: skyblue;
             overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
         }
 
         .navbar a {
-            float: left;
-            display: block;
             color: white;
             text-align: center;
             padding: 14px 16px;
@@ -32,8 +36,8 @@
         }
 
         .dropdown {
-            float: left;
             margin-right: 10px; /* Add some spacing between dropdowns */
+            position: relative;
         }
 
         .dropdown select {
@@ -48,6 +52,22 @@
         .dropdown select:hover {
             background-color: #ddd;
             color: black;
+        }
+
+        .sub-dropdown {
+            position: absolute;
+            top: 100%; /* Position below the parent dropdown */
+            left: 0;
+            display: none;
+        }
+
+        .sub-dropdown select {
+            width: 100%; /* Full width */
+            box-sizing: border-box;
+        }
+
+        .dropdown:hover .sub-dropdown {
+            display: block;
         }
     </style>
 </head>
@@ -74,14 +94,27 @@
     <div class="dropdown">
         <select onchange="window.location.href=this.value;">
             <option value="#" selected disabled hidden>Payroll</option>
-            <option th:value="@{/master}">Master</option>
-            <option th:value="@{/reports}">Reports</option>
-            <option th:value="@{/transactions}">Transaction</option>
+            <optgroup label="Master">
+                <option th:value="@{/master/employees}">Employees</option>
+                <!-- Add more Master subpoints as needed -->
+            </optgroup>
+            <optgroup label="Reports">
+                <option th:value="@{/reports/salary}">Salary Report</option>
+                <!-- Add more Reports subpoints as needed -->
+            </optgroup>
+            <optgroup label="Transaction">
+                <option th:value="@{/transactions/add-salary}">Add Salary</option>
+                <!-- Add more Transaction subpoints as needed -->
+            </optgroup>
         </select>
     </div>
     <a th:href="@{/logout}">Logout</a>
 </div>
 
 <h1>Welcome to Dashboard</h1>
+<p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" style="font-weight: bold;"></p>
+
+<!-- Display Time -->
+<p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
 </body>
 </html>

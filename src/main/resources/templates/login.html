@@ -24,21 +24,6 @@
             text-align: center;
         }
 
-<!--        label {-->
-<!--            display: flex;-->
-<!--            flex-direction: column;-->
-<!--            align-items: flex-start;-->
-<!--            margin-bottom: 10px;-->
-<!--        }-->
-
-<!--        input {-->
-<!--            width: 100%;-->
-<!--            padding: 10px;-->
-<!--            box-sizing: border-box;-->
-<!--            border: 1px solid #ccc;-->
-<!--            border-radius: 4px;-->
-<!--        }-->
-
         label{
             display: flex;
             margin-bottom: 10px;
@@ -74,10 +59,10 @@
     <h1>Login</h1>
 
     <!-- Display Date -->
-    <p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" style="font-weight: bold;"></p>
+    <p>Current Date</p><p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" style="font-weight: bold;"></p>
 
     <!-- Display Time -->
-    <p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
+    <p>Working Date</p><p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
 
 
     <form action="/login" method="post">

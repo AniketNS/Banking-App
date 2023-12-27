@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate Print</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .headdata {
+            display: flex;
+            text-align: center;
+            margin:2px;
+        }
+    </style>
+</head>
+<body>
+<h1>THE SANKHALI URBAN CO-OP. CREDIT SOCIETY LTD, SANKHALIM, GOA, SANKHALI</h1>
+<h2>CERTIFICATE PRINT</h2>
+<div class="headdata">
+    <p th:text="'Bank Code: 0001'"></p>
+    <p th:text="'Branch Code: ' + ${branchcode}" style="font-weight: bold;"></p>
+    <p th:text="'User: ' + ${username}" style="font-weight: bold;"></p>
+</div>
+
+</body>
+</html>
