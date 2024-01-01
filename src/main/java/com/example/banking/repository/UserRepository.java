@@ -1,5 +1,3 @@
-// com.example.banking.repository.UserRepository
-
 package com.example.banking.repository;
 
 import com.example.banking.model.User;

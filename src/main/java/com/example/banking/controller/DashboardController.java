@@ -13,7 +13,7 @@ public class DashboardController {
     public String dashboard(Model model) {
         // Add any additional attributes needed for the dashboard page
         model.addAttribute("message", "Hello from Thymeleaf!");
-        return "dashboard";
+        return "dashboard"; // Assuming "dashboard" is the name of your Thymeleaf template
     }
 
     @GetMapping("/logout")
@@ -25,7 +25,6 @@ public class DashboardController {
         }
 
         // Redirect to the login page after logout
-        return "redirect:/login";
+        return "redirect:/login"; // Assuming "login" is the URL mapping for your login page
     }
-
 }

@@ -3,114 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <title>Certificate Print</title>
+    <!-- Add these lines to include Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
     <style>
         body {
-            background-color: skyblue;
+            font-family: Times New Roman, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #87CEFA; /* Light Sky Blue */
         }
+
         h1, h2 {
             text-align: center;
+            margin-top: 20px;
         }
+
         .headdata {
             display: flex;
-            flex-direction:row ;
-            text-align: center;
-            margin: 2px;
-            justify-content: center;
-        }
-        .headdata p {
-            margin-right: 30px;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .box {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 10px;
-            border: 1px solid black;
-            width: 50%;
-        }
-        .box p {
-            margin-left: 50px;
-        }
-        .box input {
-            width: 10%;
-        }
-        .date input{
-            width: 48%;
-        }
-        .member {
-            display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
-            margin-right: 12px;
-            align-items: center;
-            flex-wrap: nowrap;
+            justify-content: center;
+            text-align: center;
+            margin: 20px;
         }
-        .member p {
-            margin: 30px;
+
+        .headdata p {
+            margin: 0 20px;
         }
-        .date p {
-            margin: 30px;
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        h3 {
+            text-align: center;
+        }
+
+        .box {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .member,
         .date {
             display: flex;
-            flex-direction: row;
-            margin: 10px;
+            justify-content: space-between;
         }
-        .message{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
         }
-        .message input {
-            width: 1040px;
-            padding: 8px;
-        }
+
         .buttons {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin: 10px;
+            text-align: center;
+            margin-top: 20px;
         }
-        .buttons button {
-            margin: 10px;
-            padding: 10px;
-            width: 100px;
-            border-radius: 5px;
-            border: 1px solid black;
-            background-color: white;
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            margin: 0 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #memberTypeDropdown {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        #memberTypeText {
+            width: 100px;
+            margin-left: 10px;
+        }
+
+        .message input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            margin-top: 8px;
+            box-sizing: border-box;
+        }
+
+        select,
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-<h1>THE SANKHALI URBAN CO-OP. CREDIT SOCIETY LTD, SANKHALIM, GOA, SANKHALI</h1>
+<h1>THE SANKHALI URBAN CO-OP. CREDIT SOCIETY LTD, SANKHALI, GOA, SANKHALI</h1>
 <h2>CERTIFICATE PRINT</h2>
 <div class="headdata">
     <p th:text="'Bank Code: 0001'"></p>
     <p th:text="'Branch Code: ' + ${branchcode}" style="font-weight: bold;"></p>
-    <p th:text="'User: ' + ${username}" style="font-weight: bold;"></p>
+    <p th:text="'User: ' + ${User.username}" style="font-weight: bold;"></p>
     <p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
 </div>
 <div class="container">
     <h3>Certification Details</h3>
     <div class="box">
         <p>Member Type :
-            <input type="text" name="memberType">
+            <select id="memberTypeDropdown" onchange="updateMemberType()">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <input type="text" id="memberTypeText" name="memberType" readonly>
         </p>
         <div class="member">
-            <p>Member No From :
-                <input type="text" name="memberNoFrom">
-            </p>
-            <p>Member No To :
-                <input type="text" name="memberNoTo">
-            </p>
+            <div class="member">
+                <p>Member No From :
+                    <!-- Open picklist in a new window when clicked -->
+                    <button type="button" class="btn btn-outline-secondary" onclick="openPicklist()">...</button>
+                    <input type="text" id="memberNoFrom" name="memberNoFrom">
+                </p>
+                <p>Member No To :
+                    <!-- Open picklist in a new window when clicked -->
+                    <button type="button" class="btn btn-outline-secondary" onclick="openPicklist()">...</button>
+                    <input type="text" id="memberNoTo" name="memberNoTo">
+                </p>
+            </div>
         </div>
+
         <div class="date">
             <p>Issue Date From :
                 <input type="date" name="issueDateFrom">
@@ -128,9 +165,41 @@
 </div>
 <div class="buttons">
     <button type="submit">Submit</button>
-    <!-- I want the button print which will give me a pdf format report -->
-    <button type="button" onclick="window.location.href='/certificateprint'">Print</button>
+    <button type="button" >Print</button>
     <button type="button" onclick="window.location.href='/dashboard'">Cancel</button>
 </div>
+<script th:inline="javascript">
+
+    function updateMemberType() {
+        // Get the selected value from the dropdown
+        var selectedValue = document.getElementById("memberTypeDropdown").value;
+
+        // Update the text box with the selected value
+        document.getElementById("memberTypeText").value = selectedValue;
+    }
+
+    function openPicklist() {
+        // Get the selected member type from the dropdown
+        var memberType = document.getElementById("memberTypeDropdown").value;
+
+        // Construct the picklist URL based on the member type
+        var picklistUrl = '/picklist?memberType=' + memberType;
+
+        // Open the picklist in a new window
+        window.open(picklistUrl, 'Picklist', 'width=600,height=400');
+    }
+
+
+    function pickMember(value) {
+        // Set the selected value to the input field in the parent window
+        window.opener.document.getElementById('memberNoFrom').value = value;
+
+        // Close the picklist window
+        window.close();
+    }
+
+</script>
 </body>
 </html>
+
+
