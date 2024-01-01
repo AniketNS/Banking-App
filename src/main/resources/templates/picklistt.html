@@ -1,0 +1,127 @@
+<!-- printcert.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Picklist</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        /* Style for the "Pick" button */
+        .pick-button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Style for the "Pick" button on hover */
+        .pick-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h2>Member Picklist</h2>
+
+<!-- Display the members from the database in a table format -->
+<table>
+    <tr>
+        <th>Action</th> <!-- New column for the "Pick" button -->
+        <th>Member Number </th>
+        <th>Member Type</th>
+        <th>Member Name</th>
+        <th>Member Number From</th>
+    </tr>
+    <!-- Assuming ${members} is the list of members from your model -->
+    <tr th:each="member : ${members}">
+        <td>
+            <button class="pick-button" th:onclick="'javascript:pickMemberFrom(\'' + ${member.number} + '\');'">
+                Pick From
+            </button>
+
+        </td>
+
+        <td th:text="${member.number}"></td>
+
+        <td th:text="${member.type}"></td>
+        <td th:text="${member.name}"></td>
+        <td>
+            <button class="pick-button" th:onclick="'javascript:pickMemberTo(\'' + ${member.number} + '\');'">
+                Pick To
+            </button>
+        </td>
+    </tr>
+</table>
+
+<!-- Include Bootstrap JS for button styling -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- JavaScript function to handle the "Pick" button click -->
+<script th:inline="javascript">
+
+    function pickMemberFrom(memberNumber) {
+        // Access the opener window (Certificate Print page)
+        var openerWindow = window.opener;
+
+        // Update the corresponding textbox in the Certificate Print page for Member No From
+        openerWindow.document.getElementById('memberNoFrom').value = memberNumber;
+
+        window.close();
+    }
+
+    function pickMemberTo(memberNumber) {
+        // Access the opener window (Certificate Print page)
+        var openerWindow = window.opener;
+
+        // Update the corresponding textbox in the Certificate Print page for Member No To
+        openerWindow.document.getElementById('memberNoTo').value = memberNumber;
+
+        window.close();
+    }
+
+</script>
+</body>
+
+</html>

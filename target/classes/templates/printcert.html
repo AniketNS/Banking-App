@@ -1,3 +1,5 @@
+<!-- printcert.html -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -115,12 +117,7 @@
 <body>
 <h1>THE SANKHALI URBAN CO-OP. CREDIT SOCIETY LTD, SANKHALI, GOA, SANKHALI</h1>
 <h2>CERTIFICATE PRINT</h2>
-<div class="headdata">
-    <p th:text="'Bank Code: 0001'"></p>
-    <p th:text="'Branch Code: ' + ${branchcode}" style="font-weight: bold;"></p>
-    <p th:text="'User: ' + ${User.username}" style="font-weight: bold;"></p>
-    <p th:text="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" style="font-weight: bold;"></p>
-</div>
+
 <div class="container">
     <h3>Certification Details</h3>
     <div class="box">
@@ -200,6 +197,5 @@
 
 </script>
 </body>
+
 </html>
-
-

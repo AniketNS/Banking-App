@@ -3,7 +3,6 @@
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/config/MongoDBConfig.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/controller/LoginController.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/repository/UserRepository.java
-/home/aniket/Downloads/bank/src/main/java/com/example/banking/service/YourDataService.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/controller/RegisterController.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/controller/CertificatePrintController.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/service/UserService.java
@@ -13,4 +12,3 @@
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/model/User.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/controller/CustomErrorController.java
 /home/aniket/Downloads/bank/src/main/java/com/example/banking/controller/HelloController.java
-/home/aniket/Downloads/bank/src/main/java/com/example/banking/service/JasperReportService.java

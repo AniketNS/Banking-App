@@ -31,6 +31,6 @@ public class PickListController {
         }
 
         model.addAttribute("members", members);
-        return "picklist";
+        return "picklistt";
     }
 }
