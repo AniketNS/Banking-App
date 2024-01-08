@@ -1,2 +1,3 @@
 # BankingApp
-Banking App of Java Internship with SpringBoot and MongoDB
+
+Banking App of Java Internship with SpringBoot and MongoDB.
